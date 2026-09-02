@@ -1,0 +1,558 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Lili Speak · Profesionales</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --black:#000000;--white:#ffffff;
+  --grey-100:#F5F5F5;--grey-200:#E8E8E8;--grey-400:#999999;
+  --grey-600:#555555;--grey-800:#1A1A1A;
+  --font-serif:'EB Garamond',Georgia,serif;
+  --font-sans:'DM Sans',system-ui,sans-serif;
+  --fg:#1A1A1A;--fg2:#555555;--fg3:#999999;--bg:#ffffff;--bg2:#F5F5F5;--border:#E8E8E8;
+}
+@media(prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --fg:#F0F0F0;--fg2:#AAAAAA;--fg3:#666666;--bg:#0D0D0D;--bg2:#1A1A1A;--border:#2A2A2A;
+  }
+}
+[data-theme="dark"]{--fg:#F0F0F0;--fg2:#AAAAAA;--fg3:#666666;--bg:#0D0D0D;--bg2:#1A1A1A;--border:#2A2A2A;}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:var(--font-sans);background:var(--bg);color:var(--fg);line-height:1.6;}
+.container{max-width:1100px;margin:0 auto;padding:0 24px;}
+
+nav.topnav{position:fixed;top:0;left:0;right:0;height:60px;z-index:100;
+  background:rgba(255,255,255,0.85);backdrop-filter:blur(12px);
+  border-bottom:1px solid var(--border);}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]) nav.topnav{background:rgba(13,13,13,0.85);}}
+[data-theme="dark"] nav.topnav{background:rgba(13,13,13,0.85);}
+.nav-inner{max-width:1100px;margin:0 auto;padding:0 24px;height:60px;
+  display:flex;align-items:center;justify-content:space-between;gap:16px;}
+.nav-left{display:flex;align-items:center;gap:20px;flex-shrink:0;}
+.nav-back{font-size:0.75rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;
+  text-decoration:none;color:var(--fg3);display:flex;align-items:center;gap:6px;
+  transition:color 0.2s;flex-shrink:0;}
+.nav-back:hover{color:var(--fg);}
+.nav-back::before{content:'←';font-size:0.9rem;}
+.nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none;}
+.nav-logo img{height:32px;width:32px;object-fit:contain;}
+.wordmark{font-family:var(--font-serif);font-size:1.2rem;font-weight:600;color:var(--fg);letter-spacing:0.01em;}
+.nav-links{display:flex;align-items:center;gap:24px;}
+.nav-links a{font-size:0.8rem;font-weight:500;letter-spacing:0.06em;text-transform:uppercase;
+  text-decoration:none;color:var(--fg2);transition:color 0.2s;}
+.nav-links a:hover{color:var(--fg);}
+@media(max-width:820px){.nav-links{display:none;}}
+
+.hero{padding:120px 0 80px;text-align:center;}
+.hero-label{font-size:0.75rem;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;
+  color:var(--fg3);margin-bottom:20px;}
+.hero h1{font-family:var(--font-serif);font-size:clamp(2.4rem,5vw,3.8rem);font-weight:400;
+  line-height:1.18;margin-bottom:24px;}
+.hero h1 em{font-style:italic;}
+.hero-sub{font-size:1.1rem;color:var(--fg2);max-width:640px;margin:0 auto 40px;}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:14px 28px;border-radius:4px;
+  font-size:0.85rem;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;
+  text-decoration:none;transition:all 0.2s;cursor:pointer;border:none;}
+.btn-primary{background:var(--fg);color:var(--bg);}
+.btn-primary:hover{opacity:0.85;}
+.btn-outline{background:transparent;color:var(--fg);border:1.5px solid var(--border);}
+.btn-outline:hover{border-color:var(--fg);}
+.hero-ctas{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;}
+
+.ticker-wrap{overflow:hidden;padding:18px 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border);margin:60px 0;}
+.ticker{display:flex;gap:0;white-space:nowrap;animation:ticker 28s linear infinite;}
+.ticker-item{font-size:0.8rem;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;
+  color:var(--fg3);padding:0 28px;}
+.ticker-item span{color:var(--fg);margin-right:28px;}
+@keyframes ticker{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+
+section{padding:80px 0;}
+section+section{border-top:1px solid var(--border);}
+.section-label{font-size:0.72rem;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;
+  color:var(--fg3);margin-bottom:16px;}
+.section-title{font-family:var(--font-serif);font-size:clamp(1.8rem,3.5vw,2.6rem);font-weight:400;
+  line-height:1.25;margin-bottom:20px;}
+.section-title em{font-style:italic;}
+.section-lead{font-size:1.05rem;color:var(--fg2);max-width:660px;margin-bottom:40px;}
+
+.grid-3{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px;margin-top:32px;}
+.card{background:var(--bg2);border:1px solid var(--border);border-radius:6px;padding:32px;}
+.card-icon{font-size:1.8rem;margin-bottom:16px;}
+.card h3{font-family:var(--font-serif);font-size:1.25rem;font-weight:600;margin-bottom:10px;}
+.card p{font-size:0.95rem;color:var(--fg2);line-height:1.6;}
+
+.table-wrap{overflow-x:auto;margin-top:32px;}
+table{width:100%;border-collapse:collapse;font-size:0.9rem;}
+th{font-size:0.72rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;
+  color:var(--fg3);padding:12px 16px;border-bottom:2px solid var(--border);text-align:left;}
+td{padding:14px 16px;border-bottom:1px solid var(--border);color:var(--fg2);vertical-align:top;}
+td:first-child{font-weight:600;color:var(--fg);}
+tr:last-child td{border-bottom:none;}
+.check{color:#2a7a2a;font-weight:700;}
+.dash{color:var(--fg3);}
+
+.arch-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px;margin-top:32px;}
+.arch-card{border:1px solid var(--border);border-radius:6px;padding:28px 24px;position:relative;}
+.arch-num{font-family:var(--font-serif);font-size:3rem;font-weight:400;color:var(--border);
+  position:absolute;top:12px;right:18px;line-height:1;}
+.arch-card h4{font-family:var(--font-serif);font-size:1.1rem;margin-bottom:8px;}
+.arch-card p{font-size:0.88rem;color:var(--fg2);}
+
+.tool-list{display:flex;flex-direction:column;gap:16px;margin-top:32px;}
+.tool-item{display:flex;gap:20px;align-items:flex-start;padding:24px;
+  border:1px solid #1A1A1A;border-radius:6px;background:#fff;}
+.tool-badge{font-size:0.7rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;
+  color:var(--bg);background:var(--fg);padding:4px 10px;border-radius:2px;flex-shrink:0;margin-top:2px;}
+.tool-item h4{font-family:var(--font-serif);font-size:1.15rem;margin-bottom:6px;}
+.tool-item p{font-size:0.92rem;color:var(--fg2);}
+
+.cta-box{text-align:center;padding:80px 0;}
+.cta-box h2{font-family:var(--font-serif);font-size:clamp(1.8rem,3.5vw,2.8rem);margin-bottom:20px;}
+.cta-box p{font-size:1.05rem;color:var(--fg2);max-width:540px;margin:0 auto 36px;}
+
+footer{border-top:1px solid var(--border);padding:48px 0 32px;text-align:center;}
+.footer-inner{display:flex;justify-content:center;margin-bottom:24px;}
+.footer-badge{display:inline-flex;align-items:center;gap:18px;text-decoration:none;
+  padding:18px 36px;border:1px solid var(--border);border-radius:6px;transition:border-color 0.2s;}
+.footer-badge:hover{border-color:var(--fg);}
+.footer-badge img{height:52px;width:52px;object-fit:contain;}
+.footer-badge span{font-family:var(--font-serif);font-size:2rem;font-weight:600;
+  letter-spacing:0.08em;color:var(--fg);}
+.footer-copy{font-size:0.78rem;color:var(--fg3);margin-top:16px;}
+
+.reveal{opacity:0;transform:translateY(24px);transition:opacity 0.55s ease,transform 0.55s ease;}
+.reveal.visible{opacity:1;transform:none;}
+
+/* Hero split layout */
+.hero{padding:120px 0 80px;text-align:left;}
+.hero-inner{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;max-width:1100px;margin:0 auto;padding:0 24px;}
+@media(max-width:860px){.hero-inner{grid-template-columns:1fr;}.hero-img{display:none;}}
+.hero-img img{width:100%;height:520px;object-fit:cover;border-radius:8px;display:block;}
+.hero-eyebrow{font-size:0.75rem;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:var(--fg3);margin-bottom:20px;}
+.hero h1{font-family:var(--font-serif);font-size:clamp(2rem,4.5vw,3.8rem);font-weight:400;line-height:1.18;margin-bottom:24px;}
+.hero h1 em{font-style:italic;}
+.hero-sub{font-size:1.05rem;color:var(--fg2);margin-bottom:28px;line-height:1.6;}
+.tool-mini-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:28px;}
+.tool-mini-block{background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.15);border-radius:6px;padding:14px 16px;}
+.tool-mini-block strong{display:block;font-size:0.8rem;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;margin-bottom:4px;color:#fff;}
+.tool-mini-block span{font-size:0.82rem;color:rgba(255,255,255,0.7);line-height:1.4;}
+.hero-btns{display:flex;gap:12px;flex-wrap:wrap;}
+.hero .btn-white{background:#fff;color:#000;padding:13px 26px;border-radius:4px;font-size:0.83rem;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;text-decoration:none;display:inline-flex;align-items:center;}
+.hero .btn-outline{background:transparent;color:#fff;border:1.5px solid rgba(255,255,255,0.4);padding:13px 26px;border-radius:4px;font-size:0.83rem;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;text-decoration:none;display:inline-flex;align-items:center;}
+.hero .btn-white:hover{opacity:0.9;}
+.hero .btn-outline:hover{border-color:#fff;}
+/* Pricing concept grid */
+.pricing-concept-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-bottom:40px;}
+@media(max-width:640px){.pricing-concept-grid{grid-template-columns:1fr;}}
+.pricing-concept{border:1px solid var(--border);border-radius:6px;padding:28px;}
+.pricing-concept .price{font-family:var(--font-serif);font-size:2.4rem;font-weight:400;margin:10px 0 6px;}
+.pricing-concept .price-label{font-size:0.72rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--fg3);margin-bottom:4px;}
+.pricing-concept p{font-size:0.92rem;color:var(--fg2);line-height:1.55;}
+
+/* Dark alternating sections */
+.dark-section{background:#000;color:#fff;}
+.dark-section .section-label{color:rgba(255,255,255,0.45);}
+.dark-section .section-title{color:#fff;}
+.dark-section .section-lead{color:rgba(255,255,255,0.7);}
+.dark-section .section-lead a{color:#fff;}
+.dark-section .card{background:rgba(255,255,255,0.06);border-color:rgba(255,255,255,0.12);}
+.dark-section .card p,.dark-section .card h3{color:rgba(255,255,255,0.8);}
+.dark-section .arch-card{border-color:rgba(255,255,255,0.12);}
+.dark-section .arch-card h4{color:#fff;}
+.dark-section .arch-card p{color:rgba(255,255,255,0.65);}
+.dark-section .arch-num{color:rgba(255,255,255,0.1);}
+.dark-section .tool-item{background:rgba(255,255,255,0.06);border-color:rgba(255,255,255,0.12);}
+.dark-section .tool-item h4{color:#fff;}
+.dark-section .tool-item p{color:rgba(255,255,255,0.65);}
+.dark-section .cta-box h2,.dark-section .cta-box p{color:#fff;}
+.dark-section .cta-box p{color:rgba(255,255,255,0.7);}
+.dark-section .btn-primary{background:#fff;color:#000;}
+.dark-section .btn-outline{border-color:rgba(255,255,255,0.4);color:#fff;}
+.dark-section .pricing-concept{border-color:rgba(255,255,255,0.12);}
+.dark-section .pricing-concept .price,.dark-section .pricing-concept h3{color:#fff;}
+.dark-section .pricing-concept .price-label,.dark-section .pricing-concept p{color:rgba(255,255,255,0.65);}
+/* Nav active */
+.nav-links a.active{color:var(--fg);font-weight:600;}
+</style>
+</head>
+<body>
+
+<nav class="topnav">
+  <div class="nav-inner">
+    <div class="nav-left">
+      <a href="#hero" class="nav-logo">
+        <img src="data:image/png;base64,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" alt="Mylili">
+        <span class="wordmark">Lili Speak</span>
+      </a>
+    </div>
+    <nav class="nav-links">
+      <a href="#hero">Home</a>
+      <a href="#comparativa">Comparativa</a>
+      <a href="#la-conexion">La Conexión</a>
+      <a href="#arquitectura">Arquitectura</a>
+      <a href="lilispeak_usuarios.html">Usuarios</a>
+          <a href="lilispeak_herramientas.html">Herramientas</a>
+      <a href="lilispeak_pitch_3.html">Por qué</a>
+      <a href="#tarifas">Tarifas</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+  </div>
+</nav>
+
+<section class="hero" id="hero" style="background:#000;color:#fff;">
+  <div class="hero-inner">
+    <div>
+      <p class="hero-eyebrow">Lili Speak · Para profesores de idiomas y coaches de comunicación</p>
+      <h1>Tu gemelo <em>Vocal</em><br>que te protege de las plataformas de IA</h1>
+      <p class="hero-sub">Lili Speak convierte tu metodología fonética en un <strong style="color:#fff;">gemelo cerebral</strong> que practica con tus alumnos las 24h — con tu voz, tu criterio y tu estilo pedagógico.</p>
+      <div class="tool-mini-grid">
+        <div class="tool-mini-block">
+          <strong>🧠 MindTwin</strong>
+          <span>Tu gemelo vocal practica con el alumno en cualquier momento</span>
+        </div>
+        <div class="tool-mini-block">
+          <strong>📣 Marketing</strong>
+          <span>Genera contenidos y campañas para atraer más alumnos</span>
+        </div>
+        <div class="tool-mini-block">
+          <strong>🤝 Comercial</strong>
+          <span>Gestiona propuestas, presupuestos y captación de clientes</span>
+        </div>
+        <div class="tool-mini-block">
+          <strong>🗂️ Administración</strong>
+          <span>Automatiza seguimiento, facturas y comunicaciones</span>
+        </div>
+      </div>
+      <div class="hero-btns">
+        <a href="#contacto" class="btn btn-white">Empieza ya</a>
+        <a href="lilispeak_usuarios.html">Usuarios</a>
+          <a href="lilispeak_herramientas.html" class="btn btn-outline">Ver todas las herramientas</a>
+      </div>
+    </div>
+    <div class="hero-img reveal">
+      <img src="https://lili-speak-landing.vercel.app/mindtwins/image1.jpg" alt="Lili Speak MindTwin" style="border-radius:8px;filter:brightness(0.92);">
+    </div>
+  </div>
+</section>
+
+<div class="ticker-wrap">
+  <div class="ticker" id="ticker">
+    <span class="ticker-item"><span>Gemelo Digital</span> practica con el alumno las 24h</span>
+    <span class="ticker-item"><span>Voz clonada</span> el alumno escucha tu pronunciación modelo</span>
+    <span class="ticker-item"><span>Escalabilidad</span> más alumnos, misma calidad de corrección</span>
+    <span class="ticker-item"><span>Metodología propia</span> tu criterio fonético en cada sesión</span>
+    <span class="ticker-item"><span>Retroalimentación</span> corrección automática con tu estilo pedagógico</span>
+    <span class="ticker-item"><span>Gemelo Digital</span> practica con el alumno las 24h</span>
+    <span class="ticker-item"><span>Voz clonada</span> el alumno escucha tu pronunciación modelo</span>
+    <span class="ticker-item"><span>Escalabilidad</span> más alumnos, misma calidad de corrección</span>
+    <span class="ticker-item"><span>Metodología propia</span> tu criterio fonético en cada sesión</span>
+    <span class="ticker-item"><span>Retroalimentación</span> corrección automática con tu estilo pedagógico</span>
+  </div>
+</div>
+
+
+
+<section id="comparativa">
+  <div class="container reveal">
+    <p class="section-label">Comparativa</p>
+    <h2 class="section-title">Lili Speak frente a los métodos<br><em>habituales</em></h2>
+    <p class="section-lead">Las apps de idiomas ofrecen contenido genérico. Las clases particulares dependen de tu disponibilidad. Lili Speak combina tu metodología con práctica ilimitada y corrección fonética personalizada.</p>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Capacidad</th>
+            <th>App de idiomas</th>
+            <th>Clase particular</th>
+            <th>Lili Speak</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Práctica 24/7</td>
+            <td class="check">✓ genérica</td>
+            <td class="dash">✗</td>
+            <td class="check">✓ con tu metodología</td>
+          </tr>
+          <tr>
+            <td>Voz del profesional</td>
+            <td class="dash">✗</td>
+            <td class="check">✓ solo en sesión</td>
+            <td class="check">✓ siempre disponible</td>
+          </tr>
+          <tr>
+            <td>Corrección fonética personalizada</td>
+            <td class="check">✓ básica y genérica</td>
+            <td class="check">✓ solo en sesión</td>
+            <td class="check">✓ automática con tu criterio</td>
+          </tr>
+          <tr>
+            <td>Metodología propia del profesor</td>
+            <td class="dash">✗</td>
+            <td class="check">✓ solo en sesión</td>
+            <td class="check">✓ siempre activa</td>
+          </tr>
+          <tr>
+            <td>Escalabilidad sin más horas</td>
+            <td class="check">✓ parcial</td>
+            <td class="dash">✗</td>
+            <td class="check">✓ completa</td>
+          </tr>
+          <tr>
+            <td>Registro de progresión fonética</td>
+            <td class="check">✓ básico</td>
+            <td class="dash">✗</td>
+            <td class="check">✓ continuo por alumno</td>
+          </tr>
+          <tr>
+            <td>Herramientas de negocio integradas</td>
+            <td class="dash">✗</td>
+            <td class="dash">✗</td>
+            <td class="check">✓ marketing, comercial, admin</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+
+<section id="la-conexion" class="dark-section">
+  <div class="container reveal">
+    <p class="section-label">La Conexión</p>
+    <h2 class="section-title">Tú eres el profesor.<br><em>El MindTwin es tu extensión.</em></h2>
+    <p class="section-lead">Un gemelo digital no te reemplaza — amplifica tu alcance. Mientras tú duermes, el MindTwin practica con tus alumnos con tu voz clonada, tu metodología y tus criterios fonéticos. Tú sigues siendo quien define la excelencia.</p>
+    <div class="grid-3">
+      <div class="card">
+        <div class="card-icon">🎙️</div>
+        <h3>Tu voz, siempre disponible</h3>
+        <p>El alumno practica escuchando tu pronunciación modelo en cualquier momento. La voz clonada reproduce tu entonación, ritmo y acento de referencia con precisión — como si estuvieras en sesión.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">📖</div>
+        <h3>Tu metodología, codificada</h3>
+        <p>Documentamos tu enfoque pedagógico: secuencias de aprendizaje, tipología de errores que priorizas, estrategias de corrección y nivel de exigencia por perfil de alumno. El gemelo actúa con tu criterio.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">📊</div>
+        <h3>Tu visibilidad, aumentada</h3>
+        <p>Dashboards con la evolución fonética de cada alumno, alertas de estancamiento y resúmenes automáticos de sesión. Sabes exactamente dónde está cada alumno sin multiplicar tus horas de seguimiento.</p>
+      </div>
+    </div>
+  </div>
+</section>
+<section id="arquitectura">
+  <div class="container reveal">
+    <p class="section-label">Arquitectura</p>
+    <h2 class="section-title">Cómo se construye<br><em>tu gemelo vocal</em></h2>
+    <p class="section-lead">Lili Speak aprende tu enfoque pedagógico, tu pronunciación modelo y los errores que más corriges. Todo queda codificado en un MindTwin que actúa con tu criterio las 24h.</p>
+    <div class="arch-grid">
+      <div class="arch-card">
+        <span class="arch-num">01</span>
+        <h4>Captura pedagógica</h4>
+        <p>Documentamos tu método fonético: secuencias de aprendizaje, tipología de errores prioritarios, estrategias de corrección y nivel de exigencia por perfil y lengua.</p>
+      </div>
+      <div class="arch-card">
+        <span class="arch-num">02</span>
+        <h4>Clonado de voz</h4>
+        <p>Con muestras de tu voz, entrenamos un modelo de síntesis vocal que reproduce tu timbre y entonación en tu lengua materna.</p>
+      </div>
+      <div class="arch-card">
+        <span class="arch-num">03</span>
+        <h4>Calibración fonética</h4>
+        <p>Ajustamos los parámetros al idioma y variedad que enseñas: fonemas objetivo, patrones de error recurrentes y criterios de corrección específicos para los perfiles de tus alumnos.</p>
+      </div>
+      <div class="arch-card">
+        <span class="arch-num">04</span>
+        <h4>Activación y seguimiento</h4>
+        <p>El gemelo entra en servicio. Accedes a dashboards con la evolución fonética de cada alumno, alertas de estancamiento y resúmenes automáticos de práctica.</p>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<section id="idiomas" class="dark-section">
+  <div class="container reveal">
+    <!-- Idiomas block -->
+    <div style="margin-top:48px;">
+      <p class="section-label">Idiomas con soporte profesional verificado</p>
+      <p style="font-size:0.95rem;color:rgba(255,255,255,0.65);margin-bottom:24px;max-width:660px;">Los modelos de IA actuales trabajan con precisión fonética y rigor académico en los siguientes idiomas. Son los idiomas en los que tu MindTwin puede corregir, practicar y generar contenido al nivel de un profesional.</p>
+      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:12px;">
+        <div style="border:1px solid rgba(255,255,255,0.12);border-radius:6px;padding:16px 18px;background:rgba(255,255,255,0.04);">
+          <div style="font-size:1.6rem;margin-bottom:6px;">🇬🇧</div>
+          <div style="font-family:var(--font-serif);font-size:1rem;font-weight:600;color:#fff;margin-bottom:2px;">Inglés</div>
+          <div style="font-size:0.78rem;color:rgba(255,255,255,0.45);">Nivel C2 verificado</div>
+        </div>
+        <div style="border:1px solid rgba(255,255,255,0.12);border-radius:6px;padding:16px 18px;background:rgba(255,255,255,0.04);">
+          <div style="font-size:1.6rem;margin-bottom:6px;">🇪🇸</div>
+          <div style="font-family:var(--font-serif);font-size:1rem;font-weight:600;color:#fff;margin-bottom:2px;">Español</div>
+          <div style="font-size:0.78rem;color:rgba(255,255,255,0.45);">Todas las variedades</div>
+        </div>
+        <div style="border:1px solid rgba(255,255,255,0.12);border-radius:6px;padding:16px 18px;background:rgba(255,255,255,0.04);">
+          <div style="font-size:1.6rem;margin-bottom:6px;">🇫🇷</div>
+          <div style="font-family:var(--font-serif);font-size:1rem;font-weight:600;color:#fff;margin-bottom:2px;">Francés</div>
+          <div style="font-size:0.78rem;color:rgba(255,255,255,0.45);">Fonética incluida</div>
+        </div>
+        <div style="border:1px solid rgba(255,255,255,0.12);border-radius:6px;padding:16px 18px;background:rgba(255,255,255,0.04);">
+          <div style="font-size:1.6rem;margin-bottom:6px;">🇩🇪</div>
+          <div style="font-family:var(--font-serif);font-size:1rem;font-weight:600;color:#fff;margin-bottom:2px;">Alemán</div>
+          <div style="font-size:0.78rem;color:rgba(255,255,255,0.45);">Pronunciación compleja</div>
+        </div>
+        <div style="border:1px solid rgba(255,255,255,0.12);border-radius:6px;padding:16px 18px;background:rgba(255,255,255,0.04);">
+          <div style="font-size:1.6rem;margin-bottom:6px;">🇵🇹</div>
+          <div style="font-family:var(--font-serif);font-size:1rem;font-weight:600;color:#fff;margin-bottom:2px;">Portugués</div>
+          <div style="font-size:0.78rem;color:rgba(255,255,255,0.45);">BR + PT</div>
+        </div>
+        <div style="border:1px solid rgba(255,255,255,0.12);border-radius:6px;padding:16px 18px;background:rgba(255,255,255,0.04);">
+          <div style="font-size:1.6rem;margin-bottom:6px;">🇮🇹</div>
+          <div style="font-family:var(--font-serif);font-size:1rem;font-weight:600;color:#fff;margin-bottom:2px;">Italiano</div>
+          <div style="font-size:0.78rem;color:rgba(255,255,255,0.45);">Musicalidad vocal</div>
+        </div>
+        <div style="border:1px solid rgba(255,255,255,0.12);border-radius:6px;padding:16px 18px;background:rgba(255,255,255,0.04);">
+          <div style="font-size:1.6rem;margin-bottom:6px;">🇯🇵</div>
+          <div style="font-family:var(--font-serif);font-size:1rem;font-weight:600;color:#fff;margin-bottom:2px;">Japonés</div>
+          <div style="font-size:0.78rem;color:rgba(255,255,255,0.45);">Kana + kanji</div>
+        </div>
+        <div style="border:1px solid rgba(255,255,255,0.12);border-radius:6px;padding:16px 18px;background:rgba(255,255,255,0.04);">
+          <div style="font-size:1.6rem;margin-bottom:6px;">🇨🇳</div>
+          <div style="font-family:var(--font-serif);font-size:1rem;font-weight:600;color:#fff;margin-bottom:2px;">Chino mandarín</div>
+          <div style="font-size:0.78rem;color:rgba(255,255,255,0.45);">Tonos + pinyin</div>
+        </div>
+        <div style="border:1px solid rgba(255,255,255,0.12);border-radius:6px;padding:16px 18px;background:rgba(255,255,255,0.04);">
+          <div style="font-size:1.6rem;margin-bottom:6px;">🇸🇦</div>
+          <div style="font-family:var(--font-serif);font-size:1rem;font-weight:600;color:#fff;margin-bottom:2px;">Árabe</div>
+          <div style="font-size:0.78rem;color:rgba(255,255,255,0.45);">MSA + dialectos</div>
+        </div>
+        <div style="border:1px solid rgba(255,255,255,0.12);border-radius:6px;padding:16px 18px;background:rgba(255,255,255,0.04);">
+          <div style="font-size:1.6rem;margin-bottom:6px;">🇰🇷</div>
+          <div style="font-family:var(--font-serif);font-size:1rem;font-weight:600;color:#fff;margin-bottom:2px;">Coreano</div>
+          <div style="font-size:0.78rem;color:rgba(255,255,255,0.45);">Hangul + entonación</div>
+        </div>
+        <div style="border:1px solid rgba(255,255,255,0.12);border-radius:6px;padding:16px 18px;background:rgba(255,255,255,0.04);">
+          <div style="font-size:1.6rem;margin-bottom:6px;">🇳🇱</div>
+          <div style="font-family:var(--font-serif);font-size:1rem;font-weight:600;color:#fff;margin-bottom:2px;">Neerlandés</div>
+          <div style="font-size:0.78rem;color:rgba(255,255,255,0.45);">Fonética germánica</div>
+        </div>
+        <div style="border:1px solid rgba(255,255,255,0.12);border-radius:6px;padding:16px 18px;background:rgba(255,255,255,0.04);">
+          <div style="font-size:1.6rem;margin-bottom:6px;">🇷🇺</div>
+          <div style="font-family:var(--font-serif);font-size:1rem;font-weight:600;color:#fff;margin-bottom:2px;">Ruso</div>
+          <div style="font-size:0.78rem;color:rgba(255,255,255,0.45);">Cirílico + fonética</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="herramientas">
+  <div class="container reveal">
+    <p class="section-label">Herramientas</p>
+    <h2 class="section-title">Ecosistema completo para<br><em>tu práctica de idiomas</em></h2>
+    <p class="section-lead">Lili Speak incluye el MindTwin como herramienta estrella y un ecosistema de herramientas de marketing, captación y administración diseñadas para profesionales del lenguaje. <a href="lilispeak_usuarios.html">Usuarios</a>
+          <a href="lilispeak_herramientas.html" style="color:var(--fg);font-weight:600;">Ver todas las herramientas →</a></p>
+    <div class="tool-list">
+      <div class="tool-item">
+        <span class="tool-badge">⭐ MindTwin</span>
+        <div>
+          <h4>MindTwin · Tu gemelo vocal digital</h4>
+          <p>El núcleo de Lili Speak. Tu gemelo vocal practica con tus alumnos en cualquier momento usando tu voz clonada y tu metodología fonética. Gestiona sesiones de práctica escrita y oral, corrige errores con tu criterio, y escala tu alcance sin multiplicar tus horas. Cada alumno tiene acceso a una réplica fiel de tu enfoque pedagógico disponible las 24h.</p>
+        </div>
+      </div>
+      <div class="tool-item">
+        <span class="tool-badge">Marketing</span>
+        <div>
+          <h4>Herramientas de captación y contenidos</h4>
+          <p>Genera contenidos optimizados para redes sociales, posts educativos sobre fonética e idiomas, y campañas para captar nuevos alumnos. Crea newsletters especializadas, artículos para tu blog y material descargable que posicione tu metodología. Automatiza la publicación y mide el impacto de cada pieza de contenido.</p>
+        </div>
+      </div>
+      <div class="tool-item">
+        <span class="tool-badge">Comercial</span>
+        <div>
+          <h4>Herramientas de ventas y propuestas</h4>
+          <p>Genera propuestas personalizadas para potenciales alumnos o academias, con planes de aprendizaje, precios y metodología. Gestiona el seguimiento de leads, automatiza los recordatorios de seguimiento y convierte más consultas en matrículas. Incluye plantillas adaptadas para idiomas, fonética, comunicación y logopedia.</p>
+        </div>
+      </div>
+      <div class="tool-item">
+        <span class="tool-badge">Data</span>
+        <div>
+          <h4>Dashboard de progresión fonética</h4>
+          <p>Visualiza la evolución de cada alumno por fonema, nivel de adherencia a la práctica y errores más recurrentes. Recibe alertas automáticas cuando un alumno lleva días sin practicar o repite sistemáticamente un error sin mejora. Genera informes de progreso para compartir con el alumno o con sus familias.</p>
+        </div>
+      </div>
+      <div class="tool-item">
+        <span class="tool-badge">Admin</span>
+        <div>
+          <h4>Herramientas de administración y gestión</h4>
+          <p>Automatiza las comunicaciones rutinarias: confirmaciones de sesión, recordatorios de práctica, resúmenes de progreso y renovaciones de matrícula. Genera contratos de prestación de servicios, facturas y recibos adaptados a tu actividad. Gestiona tu agenda y los accesos de tus alumnos desde un único panel.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="tarifas" class="dark-section">
+  <div class="container reveal">
+    <p class="section-label">Tarifas</p>
+    <h2 class="section-title">Dos conceptos,<br><em>máxima claridad</em></h2>
+    <p class="section-lead">Lili Speak funciona con dos conceptos de precio. El acceso a la plataforma y todas sus herramientas tiene un coste fijo mensual. El uso del MindTwin — las sesiones de práctica de tus alumnos — se factura por hora, y tú aplicas el margen que consideres.</p>
+    <div class="pricing-concept-grid">
+      <div class="pricing-concept">
+        <p class="price-label">Concepto 1 · Acceso a la plataforma</p>
+        <p class="price">99€<span style="font-size:1.1rem;color:var(--fg3);">/mes</span></p>
+        <p>Acceso completo a todas las herramientas de Lili Speak: marketing, captación comercial, administración, dashboards y configuración de tu MindTwin. Sin límite de herramientas, sin permanencia.</p>
+      </div>
+      <div class="pricing-concept" style="border-color:var(--fg);">
+        <p class="price-label">Concepto 2 · Uso del MindTwin</p>
+        <p class="price">10€<span style="font-size:1.1rem;color:var(--fg3);">/hora</span></p>
+        <p>Cada hora de práctica de tus alumnos con tu gemelo vocal se factura a 10€ de coste base. Tú añades tu margen y lo repercutes como servicio adicional. Sin coste si el alumno no practica.</p>
+      </div>
+    </div>
+    <p style="font-size:0.9rem;color:var(--fg3);text-align:center;margin-top:8px;">Sin permanencia · Acceso inmediato · Soporte incluido</p>
+  </div>
+</section>
+
+<section id="contacto" class="cta-box">
+  <div class="container reveal">
+    <h2>Empieza a construir<br><em>tu gemelo vocal</em></h2>
+    <p>Cuéntanos tu metodología y perfil de alumnos. Te mostramos cómo Lili Speak encaja en tu práctica sin cambiar lo que ya funciona.</p>
+    <div class="hero-ctas">
+      <a href="mailto:hola@mylili.org" class="btn btn-primary">Contactar →</a>
+      <a href="lilispeak_usuarios.html">Usuarios</a>
+          <a href="lilispeak_herramientas.html" class="btn btn-outline">Ver todas las herramientas</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <a href="mylili_v3.html" class="footer-badge">
+      <img src="data:image/png;base64,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" alt="Mylili">
+      <span>MYLILI</span>
+      <img src="data:image/png;base64,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" alt="Mylili" style="transform:scaleX(-1);">
+    </a>
+  </div>
+  <div class="container">
+    <p class="footer-copy">© 2026 Mylili.org · Lili Speak · Todos los derechos reservados</p>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var t=document.getElementById('ticker');
+  if(t){var c=t.innerHTML;t.innerHTML=c+c;}
+})();
+var obs=new IntersectionObserver(function(entries){
+  entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target);}}
+  );
+},{threshold:0.12});
+document.querySelectorAll('.reveal').forEach(function(el){obs.observe(el);});
+</script>
+</body>
+</html>
